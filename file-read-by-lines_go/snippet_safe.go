@@ -1,14 +1,13 @@
-package main
+package snippets
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"os"
 )
 
-func readByLinesSafe() {
-	file, err := os.Open("shakespeare_sonnet30.txt")
+func readByLinesSafe(path string, callback func(str string)) {
+	file, err := os.Open(path)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -17,7 +16,7 @@ func readByLinesSafe() {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		fmt.Println(line)
+		callback(line)
 	}
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
