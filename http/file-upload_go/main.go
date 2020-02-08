@@ -7,10 +7,14 @@ import (
 	"os"
 )
 
-const maxUploadSize = 1 << 20 // 1 MB
+// The amount of memory to use before flushing to temporary files.
+const maxMemory = 1 << 20 // 1 MB
+
+// If you instead want to limit the size of requests handled, see
+// https://godoc.org/net/http#MaxBytesReader
 
 func upload(w http.ResponseWriter, r *http.Request) {
-	err := r.ParseMultipartForm(maxUploadSize)
+	err := r.ParseMultipartForm(maxMemory)
 	if err != nil {
 		log.Print(err)
 		return
@@ -30,11 +34,6 @@ func upload(w http.ResponseWriter, r *http.Request) {
 	}
 	defer f.Close()
 	io.Copy(f, data)
-}
-
-func renderError(w http.ResponseWriter, message string, statusCode int) {
-	w.WriteHeader(http.StatusBadRequest)
-	w.Write([]byte(message))
 }
 
 func main() {
