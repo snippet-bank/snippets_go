@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"log"
 
 	_ "github.com/lib/pq"
 )
@@ -21,13 +22,14 @@ func main() {
 
 	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer db.Close()
 
 	rows, err := db.Query("SELECT id, email, username FROM account LIMIT $1", 10)
 	if err != nil {
-		panic(err)
+		log.Print(err)
+		return
 	}
 	defer rows.Close()
 	for rows.Next() {
@@ -43,6 +45,6 @@ func main() {
 	// error during scan?
 	err = rows.Err()
 	if err != nil {
-		panic(err)
+		log.Print(err)
 	}
 }
