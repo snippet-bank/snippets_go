@@ -1,3 +1,11 @@
+This is a very simplistic session management snippet.
+
+It's meant to show some of the core mechanics.
+
+It's missing key features. It does not handle session expiration, for example.
+
+## Try it out
+
 Run the server, then try going to:
 
 http://localhost/
@@ -57,3 +65,4 @@ nuked the session!
 And if you go back to Chrome > View > Developer > Developer Tools > Application > Cookies, you should see:
 
 ![img](./doc/cookie-gone.png)
+
