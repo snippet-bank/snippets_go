@@ -1,0 +1,30 @@
+{
+  "payments": [
+    {
+      "id": "CABDD645-D1F1-49B1-B14D-A43C5C61988B",
+      "amount": 14.95,
+      "currency": "USD",
+      "payer": {
+        "id": 2134983,
+        "name": "Alex Hamamatsu"
+      },
+      "payee": {
+        "id": 92034041,
+        "name": "Vincent Nakamoto"
+      }
+    },
+    {
+      "id": "4D025862-30E9-49FD-AC16-951A6D75C18F",
+      "amount": 68.00,
+      "currency": "USD",
+      "payer": {
+        "id": 43298312,
+        "name": "Melba Miyamoto"
+      },
+      "payee": {
+        "id": 14043222,
+        "name": "Matthew Kiyomizu"
+      }
+    }
+  ]
+}
