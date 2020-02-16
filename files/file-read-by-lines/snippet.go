@@ -2,19 +2,24 @@ package snippets
 
 import (
 	"bufio"
+	"log"
 	"os"
 )
 
 // readByLines reads a file into memory line by line.
 func readByLines(path string, callback func(str string)) {
-	file, _ := os.Open(path)
+	file, err := os.Open(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
 		callback(line)
 	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
 }
-
-// This is a minimal, *unsafe* version without error handling or closing file handles.
-// This is just to highlight the core functionality in the fewest lines.
-// See also "snippet_safe.go" for the version with error handling.
