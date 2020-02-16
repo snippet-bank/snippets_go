@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// SaveCSV writes a csv file to the supplied path.
 func SaveCSV(path string, data [][]string) {
 	file, err := os.Create(path)
 	if err != nil {
