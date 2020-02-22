@@ -6,15 +6,14 @@ import (
 	"testing"
 )
 
-func TestValidateEnvironmentVariable(t *testing.T) {
+func TestValidateEnvVars(t *testing.T) {
 	os.Setenv("ENV_CONFIG_REGULAR", "foo")
 	os.Setenv("ENV_CONFIG_SPLIT_WITH_UNDERSCORES", "1")
 	os.Setenv("ENV_CONFIG_MANUAL_OVERRIDE", "2")
 	os.Setenv("ENV_CONFIG_ARRAY", "3,4")
 	os.Setenv("ENV_CONFIG_MAP", "a:5,b:6")
-	os.Setenv("ENV_CONFIG_EMBEDDEDSTRUCT_VALUE", "7")
 
-	vars, err := validateEnvironmentVariables("ENV_CONFIG")
+	vars, err := validateEnvVars("ENV_CONFIG")
 	if !strings.Contains(err.Error(), "required key ENV_CONFIG_REQUIRED missing value") {
 		t.Errorf("Expected an error informing that ENV_CONFIG_REQUIRED is not set; got: %s", err.Error())
 	}
@@ -41,9 +40,5 @@ func TestValidateEnvironmentVariable(t *testing.T) {
 
 	if vars.Map["a"] != 5 || vars.Map["b"] != 6 {
 		t.Errorf("vars.Map has values %+v; expected: [a:5 b:6]", vars.Map)
-	}
-
-	if vars.EmbeddedStruct.Value != 7 {
-		t.Errorf("vars.EmbeddedStruct.Value has value: %d; expected: 7", vars.EmbeddedStruct.Value)
 	}
 }
