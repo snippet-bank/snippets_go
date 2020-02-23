@@ -10,7 +10,7 @@ A 64-bit bus is literally 64 wires that, in a given instant, transmit in paralle
 
 I.e., 8 bytes of data can flow thru the bus each time the CPU clock ticks.
 
-Since the entire computer architecture is organized around data sized at 1 "word", it's most efficient to fetch your data in chunks that line up in units of words.
+Since the entire computer architecture is organized around data sized at 1 "word", your data needs to be in chunks that line up in units of words.
 
 Therefore, as it compiles your code, Go adds padding to align your data along word boundaries for optimal fetching.
 
