@@ -7,9 +7,9 @@ import (
 
 func TestSplitOnPipes(t *testing.T) {
 	str := "apples|oranges|pears"
-	split := splitOnPipes(str)
-	expected := []string{"apples", "oranges", "pears"}
-	if !reflect.DeepEqual(split, expected) {
-		t.Errorf("Got %v, expected %v", split, expected)
+	got := splitOnPipes(str)
+	want := []string{"apples", "oranges", "pears"}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("Got %v, want %v", got, want)
 	}
 }

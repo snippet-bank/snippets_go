@@ -3,11 +3,11 @@ package snippets
 import "testing"
 
 func TestTrim(t *testing.T) {
-	str := "    some stuff      "
-	trimmed := trim(str)
-	expected := "some stuff"
+	arg := "    some stuff      "
+	got := trim(arg)
+	want := "some stuff"
 
-	if trimmed != expected {
-		t.Errorf("Got %s, expected %s", trimmed, expected)
+	if got != want {
+		t.Errorf("Got %s, want %s", got, want)
 	}
 }

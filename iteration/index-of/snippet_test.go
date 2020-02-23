@@ -3,9 +3,9 @@ package snippets
 import "testing"
 
 var tests = []struct {
-	values   []string
-	target   string
-	expected int
+	values []string
+	target string
+	want   int
 }{
 	{[]string{"a", "b", "c"}, "a", 0},
 	{[]string{"a", "b", "c"}, "b", 1},
@@ -16,9 +16,9 @@ var tests = []struct {
 
 func TestIndexOf(t *testing.T) {
 	for _, tt := range tests {
-		result := IndexOf(tt.values, tt.target)
-		if result != tt.expected {
-			t.Errorf("For %v and target %s, got %v, expected %v", tt.values, tt.target, result, tt.expected)
+		got := IndexOf(tt.values, tt.target)
+		if got != tt.want {
+			t.Errorf("For %v and target %s, got %v, want %v", tt.values, tt.target, got, tt.want)
 		}
 	}
 }

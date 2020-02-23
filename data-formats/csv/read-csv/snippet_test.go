@@ -11,11 +11,11 @@ type CSVRow struct {
 }
 
 var tests = []struct {
-	path              string
-	skipFirstLine     bool
-	expectedLineCount int
-	expectedFirstRow  CSVRow
-	expectedSecondRow CSVRow
+	path            string
+	skipFirstLine   bool
+	wantedLineCount int
+	wantedFirstRow  CSVRow
+	wantedSecondRow CSVRow
 }{
 	{
 		"fixtures/sample.csv",
@@ -40,18 +40,18 @@ func TestReadCSV(t *testing.T) {
 			t.Error("Error processing CSV", err)
 		}
 
-		if len(lines) != tt.expectedLineCount {
-			t.Errorf("Not enough data read. Got %d lines, expected %d lines.", len(lines), tt.expectedLineCount)
+		if len(lines) != tt.wantedLineCount {
+			t.Errorf("Not enough data read. Got %d lines, wanted %d lines.", len(lines), tt.wantedLineCount)
 		}
 
 		got := ToCSVRow(lines[0])
-		if got != tt.expectedFirstRow {
-			t.Errorf("Got %v, expected %v", lines[0], tt.expectedFirstRow)
+		if got != tt.wantedFirstRow {
+			t.Errorf("Got %v, wanted %v", lines[0], tt.wantedFirstRow)
 		}
 
 		got = ToCSVRow(lines[1])
-		if got != tt.expectedSecondRow {
-			t.Errorf("Got %v, expected %v", lines[0], tt.expectedSecondRow)
+		if got != tt.wantedSecondRow {
+			t.Errorf("Got %v, wanted %v", lines[0], tt.wantedSecondRow)
 		}
 
 	}

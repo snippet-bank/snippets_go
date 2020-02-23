@@ -3,10 +3,10 @@ package snippets
 import "testing"
 
 func TestGetFirstUnicodeChar(t *testing.T) {
-	str := "日本語"
-	expected := "日"
-	firstChar := getFirstUnicodeChar(str)
-	if firstChar != expected {
-		t.Errorf("Got %s but expected %s", firstChar, expected)
+	arg := "日本語"
+	want := "日"
+	got := getFirstUnicodeChar(arg)
+	if got != want {
+		t.Errorf("Got %s but want %s", got, want)
 	}
 }

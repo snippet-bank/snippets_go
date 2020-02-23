@@ -7,10 +7,10 @@ import (
 
 func TestSplitOnWhitespace(t *testing.T) {
 	str := "   some     spaces    and\tsome \t  tabs too   "
-	expected := []string{"some", "spaces", "and", "some", "tabs", "too"}
-	split := splitOnWhitespace(str)
+	want := []string{"some", "spaces", "and", "some", "tabs", "too"}
+	got := splitOnWhitespace(str)
 
-	if !reflect.DeepEqual(split, expected) {
-		t.Errorf("Got %v, expected %v", split, expected)
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("Got %v, want %v", got, want)
 	}
 }

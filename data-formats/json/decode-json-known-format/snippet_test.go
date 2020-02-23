@@ -16,16 +16,16 @@ func TestDecodePayment(t *testing.T) {
 	data, _ := ioutil.ReadAll(jsonFile)
 	pmts := decodePayment(data)
 
-	expected := "Alex Hamamatsu"
-	payerName := pmts.Payments[0].Payer.Name
-	if payerName != expected {
-		t.Errorf("Got %s, expected %s ", payerName, expected)
+	want := "Alex Hamamatsu"
+	got := pmts.Payments[0].Payer.Name
+	if got != want {
+		t.Errorf("Got %s, want %s ", got, want)
 	}
 
-	expected = "Melba Miyamoto"
-	payerName = pmts.Payments[1].Payer.Name
-	if payerName != expected {
-		t.Errorf("Got %s, expected %s ", payerName, expected)
+	want = "Melba Miyamoto"
+	got = pmts.Payments[1].Payer.Name
+	if got != want {
+		t.Errorf("Got %s, want %s ", got, want)
 	}
 
 }
