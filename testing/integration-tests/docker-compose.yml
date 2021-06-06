@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres #default just making it explicit
+      POSTGRES_DB: postgres #default just making it explicit
+    ports:
+      - "5432:5432"
+    networks:
+      - "url_shortener_net"
+networks:
+  url_shortener_net:
